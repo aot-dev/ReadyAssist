@@ -1,0 +1,87 @@
+<header>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Help</a>
+        </li>
+        <li class="nav-item inline">
+            <mat-icon>add_shopping_cart</mat-icon>Your cart<a class="nav-link active" href="#"></a>
+          </li>
+      </ul>
+</header>
+<main>
+    <mat-card class="left-card" *ngIf="selectedCard?.image">
+        <img mat-card-image style="height: 80%;" [src]=selectedCard.image alt=selectedCard.title>
+        <div class="product-list" > 
+            <span *ngFor="let data of mainProducts; let i = index;">
+                <img  class="small-img" mat-card-image [src]=data?.image alt=data.title (click)="changeItem(i)">
+            </span>
+            
+        </div>
+    </mat-card>
+   
+
+
+<mat-card class="right-card">
+    <mat-card-header> 
+        <mat-card-title>{{selectedCard?.title}}</mat-card-title>
+        <mat-card-subtitle>
+            <button mat-icon-button  *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"  matTooltipPosition="above">
+                <mat-icon>
+                  {{showIcon(i, rating)}}
+                </mat-icon>
+              </button>
+              <span style="float: right;font-size: 20px;">{{selectedCard?.reviews.length}} Reviews</span>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <hr>
+    <span>${{selectedCard?.price}}</span>
+    <hr>
+    <mat-card-content>
+        <p>
+            {{selectedCard?.description}}
+        </p>
+    </mat-card-content>
+    <mat-card-actions style="display: absolute;bottom: 2%;">
+        <button>Add to cart</button>
+    </mat-card-actions>
+</mat-card>
+<h2 style="text-align: center;"> Similar Products</h2>
+<div class="similar">
+    <mat-card *ngFor="let data of similarProducts"> 
+        <img [src]=data.image class="simage">
+        <div class="details">
+            <span>{{data.title}}</span><br>
+            <span><button mat-icon-button  *ngFor="let ratingId of ratingArr;index as i" [id]="'star_'+i"  matTooltipPosition="above">
+                <mat-icon>
+                  {{showIcon(i,data.rating)}}
+                </mat-icon>
+              </button></span><br>
+            <span>${{data.price}}</span>
+        </div>
+    </mat-card>
+    </div>
+
+</main>
+<mat-divider></mat-divider>
+<mat-divider></mat-divider>
+<footer>
+    <div class="reviews">
+        <h1 style="text-align: left"> Reviews</h1>
+        <div *ngFor="let review of selectedCard?.reviews">
+            <mat-icon class="face">face</mat-icon>
+            <span class="name">{{review.name}}</span><br>
+            <span class="date">{{review.date}}</span>
+            <span class="desc">{{review.desc}}</span><hr>
+        </div>
+    </div>
+</footer>
+

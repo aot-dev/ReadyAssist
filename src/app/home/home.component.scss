@@ -1,0 +1,71 @@
+.left-card {
+    width: 50vw;
+    height: 60vh;
+    float: left;
+  }
+  .right-card {
+    width: 50vw;
+    height: 60vh;
+    float: right;
+  }
+  
+  .small-img {
+    width: 100%;
+    height: 10%;
+    cursor: pointer;
+  }
+  .main-image {
+      height: 90%;
+  }
+  .nav {
+      height: 5vh;
+  }
+  .nav-item {
+      font-size: 20px;
+  }
+  .product-list {
+    display: flex;
+    justify-content: space-between;
+    span {
+        width: 50vw;
+        height: 100vh;
+    }
+  }
+  .similar {
+      display: flex;
+      justify-content: space-between;
+      height: 10vh;
+      .simage {
+          height: 100%;
+          float: left;
+      }
+      div {
+          height: 100%;
+          float: right;
+        button {
+            width: 20%;
+            height: 35%;
+        }
+      };
+  }
+  .reviews {
+    position: absolute;
+    top: 80vh;
+    .face {
+        position: relative;
+        left: 1vh;
+    }
+    .name, .date{
+        position: relative;
+        left: 5%;
+    };
+    .name {
+        font-weight: bold;
+    }
+    .desc {
+        position: relative; 
+        left: 15%;       
+    }
+    
+    
+  }
